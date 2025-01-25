@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../style.css">
+  <title>PizzaTime - Kundkorg</title>
+  <link rel="icon" href="/img/pizza_logo.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #950101;">
+    <div class="container p-4">
+      <a href="../index.html" class="navbar-brand text-warning fs-3">PizzaTime <i class="bi bi-clock-fill"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse fs-5" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="../index.html" class="nav-link">Hem</a></li>
+          <li class="nav-item"><a href="../menu/menu.html" class="nav-link">Meny</a></li>
+          <li class="nav-item"><a href="../contact.html" class="nav-link">Kontakt</a></li>
+          <li class="nav-item position-relative">
+            <a href="../kundkorg/kundkorg.html" class="nav-link active fw-bold">
+              Kundkorg <i class="bi bi-cart"></i> 
+              <span id="cart-badge" class="badge bg-danger d-none">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Kundkorg -->
+<section style="background-color: #EEEEEE;">
+  <main class="container flex-grow-1 py-5" >
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="mb-5 text-center text-danger fw-bold">Din Kundkorg</h2>
+        <div id="cart-container" class="mb-4 bg-white p-4 rounded shadow-sm">
+        </div>
+        <div class="bg-white p-3 rounded shadow-sm text-end">
+          <h4 class="text-secondary">Total: <span id="cart-total" class="fw-bold text-dark">0 kr</span></h4>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-title="Broooor, du har inte ens damm på kontot!">
+            Betala
+          </button>
+          <a href="../menu/menu.html" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left me-2"></i>Fortsätt handla
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- Template för kundkorgsobjekt -->
+<template id="cart-item-template">
+  <div class="row mb-3 align-items-center p-3 bg-white shadow-sm rounded">
+    <div class="col-6 col-md-5 cart-item-name text-dark fw-bold"></div>
+    <div class="col-6 col-md-3 text-center d-flex flex-column flex-md-row align-items-center">
+      <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-outline-secondary btn-sm cart-item-minus">-</button>
+        <span class="mx-2 cart-item-quantity fw-bold text-secondary"></span>
+        <button class="btn btn-outline-secondary btn-sm cart-item-plus">+</button>
+      </div>
+      <button class="btn btn-sm btn-danger cart-item-remove mt-2 mt-md-0 ms-md-2">Ta bort</button>
+    </div>
+    <div class="col-4 col-md-2 text-center cart-item-price text-success fw-bold"></div>
+  </div>
+</template>
+
+<!--footer-->
+<footer class=" text-light py-5 text-center" style="background-color: #444B6E;">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-4">
+        <h5 class="mb-4 text-warning">Kontakt Info</h5>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <i class="bi bi-geo-alt-fill"></i> Business Street, New York, NY 10001
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-telephone-fill"></i>
+            <a href="tel:+1234567890" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">031-12 34 56</a>
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-envelope-fill"></i>
+            <a href="mailto:contact@example.com" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">contact@pizzatime.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Öppettider -->
+      <div class="col-lg-4 col-md-4">
+        <h5 class="mb-4 text-warning">Öppettider</h5>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <i class="bi bi-clock"></i> Vardagar: 11:00 - 20:00
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-clock"></i> Lördag: 12:00 - 22:30
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-clock"></i> Söndag: 12:00 - 21:00
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dagens Lunch -->
+      <div class="col-lg-4 col-md-4">
+        <h5 class="mb-4 text-warning">Dagens Lunch</h5>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <i class="bi bi-star-fill"></i> Vardagar: 11:00 - 15:00
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-star-fill"></i> Pris 99:- inklusive,
+          </li>
+          <li class="mb-3">
+            dricka 33cl, Sallad & Kaffe
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col-12">
+        <hr class="mb-4">
+        <div class="text-center">
+          <p class="mb-0">&copy; 2024 <span class="text-warning">PizzaTime <i class="bi bi-clock-fill"></i></span> All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="kundkorg.js"></script>
+</body>
+</html>
