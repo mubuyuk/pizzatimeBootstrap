@@ -1,15 +1,11 @@
 // Array med pizzor
 const pizzor = [
-  { namn: "Margherita", pris: 75, ingredienser: ["Tomatsås", "Mozzarella", "Basilika"] },
-  { namn: "Capricciosa", pris: 95, ingredienser: ["Tomatsås", "Mozzarella", "Skinka", "Champinjoner"] },
-  { namn: "Hawaii", pris: 100, ingredienser: ["Tomatsås", "Mozzarella", "Skinka", "Ananas"] },
-  { namn: "Vegetariana", pris: 85, ingredienser: ["Tomatsås", "Mozzarella", "Paprika", "Oliver", "Zucchini"] },
-  { namn: "Kebab Special", pris: 105, ingredienser: ["Tomatsås", "Mozzarella", "lök", "kebab"] },
-  { namn: "Diavola", pris: 110, ingredienser: ["Tomatsås", "Mozzarella", "Salami", "Chili"] },
-  { namn: "Frutti di Mare", pris: 120, ingredienser: ["Tomatsås", "Mozzarella", "Skaldjur", "Vitlök"] },
-  { namn: "Calzone", pris: 90, ingredienser: ["Tomatsås", "Mozzarella", "Skinka"] },
-  { namn: "Parmigiana", pris: 115, ingredienser: ["Tomatsås", "Mozzarella", "Parmaskinka", "Ruccola", "Parmesan"] },
-  { namn: "Pepperoni", pris: 110, ingredienser: ["Tomatsås", "Mozzarella", "Pepperoni", "Paprika"] },
+  { namn: "Margherita", pris: 75, ingredienser: ["Tomatsås", "Mozzarella", "Basilika"], bild: "../img/margarita_pizza.jpeg" },
+  { namn: "Vegetariana", pris: 85, ingredienser: ["Tomatsås", "Mozzarella", "Paprika", "Oliver", "Zucchini"], bild: "../img/vegetariana_pizza.jpeg" },
+  { namn: "Kebab Special", pris: 105, ingredienser: ["Tomatsås", "Mozzarella", "lök", "kebab"], bild: "../img/kebab_pizza.jpeg" },
+  { namn: "Diavola", pris: 110, ingredienser: ["Tomatsås", "Mozzarella", "Salami", "Chili"], bild: "../img/diavolo_pizza.jpeg" },
+  { namn: "Calzone", pris: 90, ingredienser: ["Tomatsås", "Mozzarella", "Skinka"], bild: "../img/calzone_pizza.jpeg" },
+  { namn: "Parmigiana", pris: 115, ingredienser: ["Tomatsås", "Mozzarella", "Parmaskinka", "Ruccola", "Parmesan"], bild: "../img/parma_pizza.jpeg" },
 ];
 
 function skapaMeny() {
@@ -23,6 +19,8 @@ function skapaMeny() {
     pizzaItem.querySelector(".pizza-name").textContent = `${index + 1}. ${pizza.namn}`;
     pizzaItem.querySelector(".pizza-price").textContent = `${pizza.pris}`;
     pizzaItem.querySelector(".pizza-ingredients").innerHTML = `<strong>Ingredienser:</strong> ${pizza.ingredienser.join(", ")}`;
+    pizzaItem.querySelector("img").src = pizza.bild; // Sätt bildens källa
+    pizzaItem.querySelector("img").alt = pizza.namn; // Sätt alt-text för tillgänglighet
 
     pizzaItem.querySelector("button").addEventListener("click", () => laggTillIKundkorg(pizza));
     menuList.appendChild(pizzaItem);
@@ -57,7 +55,7 @@ function uppdateraBadge() {
 // Popup
 let modalInstance; // Global modal-instans
 
-function visaPopup(pizza, antal) {
+function visaPopup(pizza) {
   if (!modalInstance) {
     modalInstance = new bootstrap.Modal(document.getElementById("cart-modal"));
   }
